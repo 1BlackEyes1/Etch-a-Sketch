@@ -1,12 +1,11 @@
 const container = document.querySelector('#container');
 const sizeBar = document.querySelector('#grid-size')
+const rgb = document.querySelector('#rgb')
 
 function gridSize(val){
-for(i=0; i < val * val; i++){
-        
+for(let i=0; i < val * val; i++){ 
     const div = document.createElement('div');
-
-    const area = 700/val -1
+    const area = 700/val -1 
 
     div.setAttribute('style', `width:${area}px  ; height:${area}px;`);
    // div.textContent = 'Hola';
@@ -35,34 +34,25 @@ function reset(){
     }
 }
 
-    
-
 sizeBar.addEventListener('input', () =>{
     reset();
     gridReSize()
     
 })
 
-
+function randomColor(){
     let r = Math.floor(Math.random() * 256);
     let g = Math.floor(Math.random() * 256);
     let b = Math.floor(Math.random() * 256);
+    return `rgb(${r}, ${g}, ${b})`
+}
 
-
-
-const rgb = document.querySelector('#rgb')
-
-rgb.addEventListener('click',() =>{
-    div.removeEventListener
-    
-    const div = document.querySelector('.color');
-    div.addEventListener('mouseover',() =>{
-        let r = Math.floor(Math.random() * 256);
-    let g = Math.floor(Math.random() * 256);
-    let b = Math.floor(Math.random() * 256);
-        div.style.backgroundColor = `rgb(${r}, ${g}, ${b})`
-         })
-}) 
-
-
+rgb.addEventListener('click', () =>{
+    let children = document.querySelectorAll('.color')
+    children.forEach(child =>{
+        child.addEventListener('mouseover', () => {
+        child.style.backgroundColor = randomColor()
+    })
+})
+})
 // intentarlo con condicionales
