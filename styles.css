@@ -6,8 +6,8 @@ body{
 #container{
     display: flex;
     flex-wrap: wrap;
-    width: 600px;
-    height: 600px;
+    width: 700px;
+    height: 700px;
     margin: 50px auto;
     border: 2px solid black;
     gap: 1px;
