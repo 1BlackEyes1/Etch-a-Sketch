@@ -10,12 +10,15 @@
 <body>
 <h1>Etch-a-Sketch</h1>
 <div id="cont-size">
+    <div>
 <label for="grid-size">Size <span>16</span> x <span>16</span></label>
 <input type="range" min="2" max="100" id="grid-size" value="16">
+    </div>
 <button id="rgb">RGB</button>
-<label for="color-picker"><input type="color" id="color-picker"></label>
+<label for="color-picker">Select Color<input type="color" id="color-picker"></label>
+<button id="Black">Default</button>
+<button id="reset">reset</button>
 </div>
-
-    <div id="container"></div>
+<div id="container"></div>
 </body>
 </html>

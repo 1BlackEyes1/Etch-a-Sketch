@@ -1,13 +1,19 @@
 const container = document.querySelector('#container');
 const sizeBar = document.querySelector('#grid-size')
 const rgb = document.querySelector('#rgb')
+const bla = document.querySelector('#Black')
+const cPiker = document.querySelector('#color-picker')
+const clean = document.querySelector('#reset')
+//const dark = document.querySelector('#opacity')
 
 function gridSize(val){
 for(let i=0; i < val * val; i++){ 
+    
     const div = document.createElement('div');
     const area = 700/val -1 
-
-    div.setAttribute('style', `width:${area}px  ; height:${area}px;`);
+    let bri = 100 
+    div.oncontextmenu = disable
+    div.setAttribute('style', `width:${area}px; height:${area}px; filter: brightness(100%)`);
    // div.textContent = 'Hola';
    div.classList.add('color')
     container.appendChild(div);
@@ -55,4 +61,67 @@ rgb.addEventListener('click', () =>{
     })
 })
 })
+
+
+bla.addEventListener('click', () =>{
+    let children = document.querySelectorAll('.color')
+    children.forEach(child =>{
+        child.addEventListener('mouseover', () => {
+        child.style.backgroundColor = '#000'
+        })
+    })
+})
+
+cPiker.addEventListener('input', () =>{
+    let colorP = document.querySelector('#color-picker').value
+    let children = document.querySelectorAll('.color')
+    children.forEach(child =>{
+        child.addEventListener('mouseover', () => {
+            
+        child.style.backgroundColor = colorP
+        })
+    })
+})
+
+clean.addEventListener('click', () =>{
+    reset()
+    gridSize(16)
+})
+
+let children = document.querySelectorAll('.color')
+children.forEach(child =>{
+    let bri = 100
+    child.addEventListener('click', () =>{
+        bri -= 10
+        child.style.filter = `brightness(${bri}%)`
+        if(bri < 10){
+            bri = 110
+        }
+
+    })
+    child.addEventListener('contextmenu',() =>{
+        bri += 10
+        child.style.filter = `brightness(${bri}%)`
+        if(bri > 1000){
+            bri = 90
+        }
+    })
+})
+
+function disable(){
+    return false
+}
+
+
+
+    
+
+
+
 // intentarlo con condicionales
+
+
+
+    
+
+
