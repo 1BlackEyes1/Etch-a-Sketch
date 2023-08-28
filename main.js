@@ -20,7 +20,28 @@ for(let i=0; i < val * val; i++){
      div.addEventListener('mouseover',function hola(){
     div.style.backgroundColor = '#000'
      })
+     
     }
+    let children = document.querySelectorAll('.color')
+children.forEach(child =>{
+    let bri = 100
+    child.addEventListener('click', () =>{
+        bri -= 10
+        child.style.filter = `brightness(${bri}%)`
+        if(bri < 10){
+            bri = 110
+        }
+
+    })
+    child.addEventListener('contextmenu',() =>{
+        bri += 10
+        child.style.filter = `brightness(${bri}%)`
+        if(bri > 1000){
+            bri = 90
+        }
+    })
+})
+
 }
 gridSize(16)
 
